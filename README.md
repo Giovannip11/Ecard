@@ -32,7 +32,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-###Activate Virtual Environment on Windows
+### Activate Virtual Environment on Windows
 ```
 .venv\Scripts\activate
 ```
