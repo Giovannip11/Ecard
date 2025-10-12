@@ -22,3 +22,25 @@ Make sure you have the following installed on your system:
 ```bash
 git clone https://github.com/<your-username>/ECard.git
 cd ECard
+```
+### Create Virtual Environment
+```bash
+python -m venv .venv
+```
+### Activate Virtual Environment on linux/macOS
+```bash
+source .venv/bin/activate
+```
+```Activate Virtual Environment on Windows
+```bash
+.venv\Scripts\activate
+```
+### Install Flask
+```bash
+pip install flask
+```
+### Run the aplication
+```bash
+export FLASK_APP=app
+flask run
+```
