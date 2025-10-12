@@ -28,9 +28,10 @@ cd ECard
 python -m venv .venv
 ```
 ### Activate Virtual Environment on linux/macOS
-```bash
+```
 source .venv/bin/activate
 ```
+
 ```Activate Virtual Environment on Windows
 ```bash
 .venv\Scripts\activate
