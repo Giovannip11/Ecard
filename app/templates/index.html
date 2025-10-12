@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ECard - Home</title>
+
+        <!-- Link to external CSS -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+
+    <body>
+        <h1>ECard</h1>
+        <p class="subtitle">The digital game of strategy and luck</p>
+
+        <div class="info-box">
+            <p>
+                Welcome to <strong>ECard</strong>! A web version of the ECard
+                game from the anime <em>Kaiji</em>, where you will test your
+                luck and strategy.
+            </p>
+            <p>
+                Face characters from the anime Kaiji in a high-stakes card
+                battle.
+            </p>
+
+            <form action="/game" method="get" class="player-form">
+                <label for="playerName">Enter your name:</label>
+                <input
+                    type="text"
+                    id="playerName"
+                    name="player"
+                    placeholder="Your name..."
+                    required
+                />
+
+                <div class="buttons">
+                    <button type="submit">🎮 Start Game</button>
+                    <button type="button" onclick="location.href='/rules'">
+                        📜 Rules
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
