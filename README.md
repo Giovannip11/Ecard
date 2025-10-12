@@ -32,16 +32,16 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-```Activate Virtual Environment on Windows
-```bash
+###Activate Virtual Environment on Windows
+```
 .venv\Scripts\activate
 ```
 ### Install Flask
-```bash
+```
 pip install flask
 ```
 ### Run the aplication
-```bash
+```
 export FLASK_APP=app
 flask run
 ```
