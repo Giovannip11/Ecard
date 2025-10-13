@@ -18,7 +18,7 @@
 
         <div class="info-box">
             <p>
-                Welcome to <strong>E-Card</strong>! A web version of the ECard
+                Welcome to <strong>ECard</strong>! A web version of the ECard
                 game from the anime <em>Kaiji</em>, where you will test your
                 luck and strategy.
             </p>
@@ -26,24 +26,30 @@
                 Face characters from the anime Kaiji in a high-stakes card
                 battle.
             </p>
+        </div>
 
-            <form action="/game" method="get" class="player-form">
-                <label for="playerName">Enter your name:</label>
-                <input
-                    type="text"
-                    id="playerName"
-                    name="player"
-                    placeholder="Your name..."
-                    required
-                />
+        <!-- 🧍 Formulário do jogador -->
+        <form class="player-form" method="post" action="/game">
+            <label for="playerName">Enter your name:</label>
+            <input
+                type="text"
+                id="playerName"
+                name="playerName"
+                placeholder="Your name here..."
+                required
+            />
+        </form>
 
-                <div class="buttons">
-                    <button type="submit">🎮 Start Game</button>
-                    <button type="button" onclick="location.href='/rules'">
-                        📜 Rules
-                    </button>
-                </div>
-            </form>
+        <!-- 🖼️ Logo Kaiji -->
+        <img
+            src="{{ url_for('static', filename='images/Gambling_Apocalypse_Kaiji_logo.png') }}"
+            alt="Kaiji Logo"
+            class="kaiji-logo"
+        />
+
+        <div class="buttons">
+            <button type="submit" form="player-form">🎮 Start Game</button>
+            <button onclick="location.href='/rules'">📜 Rules</button>
         </div>
     </body>
 </html>

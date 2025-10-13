@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #2b2b4b);
+    background: #260806;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -13,36 +13,40 @@ body {
 h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
+    color: #fff;
 }
 
 p.subtitle {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #ccccff;
+    color: #e5e5e5;
 }
 
 .info-box {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 20px;
+    padding: 25px;
     width: 80%;
     max-width: 600px;
     text-align: center;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    color: #fff;
 }
 
 .buttons {
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
-    background: #6c63ff;
+    background: #bf2315;
     border: none;
     border-radius: 10px;
     padding: 12px 25px;
-    color: white;
+    color: #fff;
     font-size: 1rem;
     cursor: pointer;
     transition:
@@ -51,35 +55,58 @@ button {
 }
 
 button:hover {
-    background: #857cff;
+    background: #f22222;
     transform: translateY(-3px);
 }
+
 .player-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 label {
     font-size: 1.1rem;
-    color: #ddd;
+    color: #fff;
+    font-weight: 600;
 }
 
 input[type="text"] {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
     outline: none;
-    width: 70%;
-    max-width: 300px;
+    width: 75%;
+    max-width: 320px;
     text-align: center;
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     color: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #f22222;
+    box-shadow: 0 0 10px rgba(242, 34, 34, 0.8);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 input[type="text"]::placeholder {
     color: #ccc;
+}
+
+.kaiji-logo {
+    width: 250px;
+    max-width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.kaiji-logo:hover {
+    transform: scale(1.05);
 }
