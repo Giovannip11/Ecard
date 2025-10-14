@@ -12,9 +12,9 @@ def index():
 @app.route("/game")
 def game():
     player = request.args.get("player")
-    return f"<h1>Welcome, {player}!</h1><p>The game will start soon...</p>"
+    return render_template("game.html", player=player)
 
 
 @app.route("/rules")
 def rules():
-    return "<h1>Rules</h1><p>Here you’ll explain how the game works.</p>"
+    return render_template("rules.html")

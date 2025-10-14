@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ECard - Game</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+
+    <body>
+        <h1>🎮 ECard Battle</h1>
+        <p class="subtitle">Player: <strong>{{ player or "Guest" }}</strong></p>
+
+        <div class="game-container">
+            <!-- Opponent section -->
+            <div class="player-section opponent">
+                <h2>Opponent</h2>
+                <div class="card-area">
+                    <div class="card back"></div>
+                    <div class="card back"></div>
+                    <div class="card back"></div>
+                    <div class="card back"></div>
+                    <div class="card back"></div>
+                </div>
+            </div>
+
+            <!-- Game status -->
+            <div class="status-box">
+                <p id="status-text">Choose a card to start the round!</p>
+            </div>
+
+            <!-- Player section -->
+            <div class="player-section">
+                <h2>You</h2>
+                <div class="card-area">
+                    <button class="card" onclick="playCard('Emperor')">
+                        Emperor
+                    </button>
+                    <button class="card" onclick="playCard('Citizen')">
+                        Citizen
+                    </button>
+                    <button class="card" onclick="playCard('Citizen')">
+                        Citizen
+                    </button>
+                    <button class="card" onclick="playCard('Citizen')">
+                        Citizen
+                    </button>
+                    <button class="card" onclick="playCard('Slave')">
+                        Slave
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button onclick="location.href='/'">🏠 Back to Home</button>
+            <button onclick="resetGame()">🔄 Reset Game</button>
+        </div>
+    </body>
+</html>

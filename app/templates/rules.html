@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ECard - Rules</title>
+
+        <!-- External CSS -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+
+    <body>
+        <h1>📜 Game Rules</h1>
+        <p class="subtitle">Learn how to play ECard</p>
+
+        <div class="info-box">
+            <h2>🃏 Objective</h2>
+            <p>
+                ECard is a psychological card game between two players: the
+                <strong>Emperor</strong> and the <strong>Citizen</strong>. The
+                goal is to defeat your opponent using strategy, logic, and a
+                little bit of luck.
+            </p>
+
+            <h2>🎴 Cards</h2>
+            <ul style="text-align: left; max-width: 500px; margin: 0 auto">
+                <li>
+                    <strong>1 Emperor</strong> card – beats all Citizens, but
+                    loses to the Slave.
+                </li>
+                <li>
+                    <strong>1 Slave</strong> card – beats the Emperor, but loses
+                    to any Citizen.
+                </li>
+                <li>
+                    <strong>8 Citizen</strong> cards – weaker than the Emperor,
+                    but stronger than the Slave.
+                </li>
+            </ul>
+
+            <h2>⚔️ Gameplay</h2>
+            <ol style="text-align: left; max-width: 500px; margin: 0 auto">
+                <li>Each player secretly chooses one of their cards.</li>
+                <li>Both cards are revealed at the same time.</li>
+                <li>The result is decided based on the card hierarchy.</li>
+                <li>Repeat until all cards are played.</li>
+            </ol>
+
+            <h2>🏁 Winning</h2>
+            <p>
+                The player who wins the majority of rounds is the winner. Use
+                deduction, bluffing, and courage — just like in *Kaiji*!
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button onclick="location.href='/'">🏠 Back to Home</button>
+            <button onclick="location.href='/game'">🎮 Start Game</button>
+        </div>
+    </body>
+</html>
