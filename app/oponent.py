@@ -7,3 +7,6 @@ def choose_oponent_card():
             random.choice(["Slave", "Citizen"])
         elif app.game.player_side == "Slave":
             random.choice(["Empereor", "Citizen"])
+
+
+

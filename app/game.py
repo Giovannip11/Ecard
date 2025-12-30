@@ -3,15 +3,21 @@ import app
 from app.routes import game
 import random
 import app.oponent as oponent
+class player:
+    def __init__(self,life):
+        self.life = life
 
+Kaiji = player(life=10000)
+Tonegawa = player(life=10000)
 
 class cards:
-    def __init__(self,name):
+    def __init__(self,name,power):
         self.name = name
+        self.power = power
 
-Empereor=cards("Empereor")
-Slave=cards("Slave")
-Citizen=cards("Citizen")
+Empereor=cards("Empereor",1)
+Slave=cards("Slave",-1)
+Citizen=cards("Citizen",0)
 def start_game():
     if app.game is not None:
         app.game.start()
@@ -39,7 +45,17 @@ def player_chosse_card():
                 return Slave
             case "Citizen":
                 return Citizen
-
+def comparison_cards_power(player_card,oponent_card):
+    if player_card.power + oponent_card.power ==0:
+        return Slave
+    if player_card.power + oponent_card.power ==1:
+        return Empereor
+    if player_card.power + oponent_card.power ==-1:
+        return Citizen
+    
+def chose_winner(player_card,oponent_car):
+    if player_card == oponent_car:
+        return "Draw"   
 def _choose_side():
     if game.player_side =="random":
         game.player_side = random.choice(['Empereor', 'Slave'])
