@@ -1,4 +1,3 @@
-from unicodedata import name
 import app
 from app.routes import game
 import random
@@ -22,52 +21,112 @@ def start_game():
     if app.game is not None:
         app.game.start()
 
-
+def bet(life):
+    if app.game is not None:
+        return app.game.bet(life)
+    try:
+        betlife = int(input("Enter the life you want to bet: "))
+        return betlife
+    except Exception:
+        return None
 
 def _start():
     game.shuffle_deck()
     game.choose_side()
+    play_turn()
+
+    if hasattr(game, 'kaiji') and game.kaiji.life <= 0:
+        return "Tonegawa wins"
+    if hasattr(game, 'Tonegawa') and game.Tonegawa.life <= 0:
+        return "Kaiji wins"
 
 def _shuffle_deck():
-    random.shuffle(game.deck)
-def player_chosse_card():
-    if app.game is not None:
-        app.game.player_choose_card()
-    if game.player_side=="Empereor":
-        match app.game.player_card:
+    if hasattr(game, 'deck'):
+        random.shuffle(game.deck)
+def player_choose_card():
+
+    if app.game is None:
+        return None
+
+    try:
+        if hasattr(app.game, 'player_choose_card'):
+            app.game.player_choose_card()
+    except Exception:
+        pass
+
+    player_card_name = getattr(app.game, 'player_card', None)
+    if player_card_name is None:
+        return None
+
+    if game.player_side == "Empereor":
+        match player_card_name:
             case "Empereor":
                 return Empereor
             case "Citizen":
                 return Citizen
-    if game.player_side=="Slave":
-        match app.game.player_card:
+    elif game.player_side == "Slave":
+        match player_card_name:
             case "Slave":
                 return Slave
             case "Citizen":
                 return Citizen
-def comparison_cards_power(player_card,oponent_card):
-    if player_card.power + oponent_card.power ==0:
+
+    return None
+def comparison_cards_power(player_card, oponent_card):
+
+    if player_card is None or oponent_card is None:
+        return None
+    total = player_card.power + oponent_card.power
+    if total == 0:
         return Slave
-    if player_card.power + oponent_card.power ==1:
+    if total == 1:
         return Empereor
-    if player_card.power + oponent_card.power ==-1:
+    if total == -1:
         return Citizen
+    return None
     
-def chose_winner(player_card,oponent_car):
-    if player_card == oponent_car:
-        return "Draw"   
+def choose_winner(player_card, oponent_card):
+    
+    if player_card is None or oponent_card is None:
+        return None
+    if player_card == oponent_card:
+        return "Draw"
+    winner_card = comparison_cards_power(player_card, oponent_card)
+    if winner_card is None:
+        return None
+    if winner_card == player_card:
+        return "Player wins"
+    if winner_card == oponent_card:
+        return "Computer wins"
+    return None
 def _choose_side():
-    if game.player_side =="random":
+    if getattr(game, 'player_side', None) == "random":
         game.player_side = random.choice(['Empereor', 'Slave'])
         game.computer_side = 'Empereor' if game.player_side == 'Slave' else 'Slave'
-    pass
 
 def play_turn():
-    if app.game is not None:
-        app.game.play_turn()
-        app.game.player_choose_card()
-        return player_chosse_card()
-        return oponent.choose_oponent_card()
+    if app.game is None:
+        return None
+
+    
+    try:
+        betlife = app.game.bet()
+    except Exception:
+        betlife = None
+
+    
+    try:
+        if hasattr(app.game, 'play_turn'):
+            app.game.play_turn()
+    except Exception:
+        pass
+
+    player_card = player_choose_card()
+    opponent_card = oponent.choose_oponent_card()
+    result = choose_winner(player_card, opponent_card)
+
+    
+    return (player_card, opponent_card, result)
         
 
 
