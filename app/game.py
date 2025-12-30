@@ -2,6 +2,7 @@ from unicodedata import name
 import app
 from app.routes import game
 import random
+import app.oponent as oponent
 
 
 class cards:
@@ -10,7 +11,7 @@ class cards:
 
 Empereor=cards("Empereor")
 Slave=cards("Slave")
-Cintizen=cards("Citizen")
+Citizen=cards("Citizen")
 def start_game():
     if app.game is not None:
         app.game.start()
@@ -26,12 +27,18 @@ def _shuffle_deck():
 def player_chosse_card():
     if app.game is not None:
         app.game.player_choose_card()
-    if player_chosse_card()=="Empereor":
-        return Empereor
-    elif player_chosse_card()=="Slave":
-        return Slave    
-    elif player_chosse_card()=="Citizen":
-        return Cintizen 
+    if game.player_side=="Empereor":
+        match app.game.player_card:
+            case "Empereor":
+                return Empereor
+            case "Citizen":
+                return Citizen
+    if game.player_side=="Slave":
+        match app.game.player_card:
+            case "Slave":
+                return Slave
+            case "Citizen":
+                return Citizen
 
 def _choose_side():
     if game.player_side =="random":
@@ -44,6 +51,8 @@ def play_turn():
         app.game.play_turn()
         app.game.player_choose_card()
         return player_chosse_card()
+        return oponent.choose_oponent_card()
+        
 
 
     
