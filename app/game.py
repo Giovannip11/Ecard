@@ -130,7 +130,15 @@ def play_turn():
 
     
     return (player_card, opponent_card, result)
-        
+
+def side_after_turn():   
+    if game.player_side == Empereor:
+        game.player_side = Slave
+        game.computer_side = Empereor
+    elif game.player_side == Slave:
+        game.player_side = Empereor
+        game.computer_side = Slave
+#after two turns side need to change
 '''idk but...fucking magic'''
 
     
