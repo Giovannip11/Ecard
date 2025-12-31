@@ -33,7 +33,10 @@ def bet(life):
 def _start():
     game.shuffle_deck()
     game.choose_side()
-    play_turn()
+    if game.player_side == Empereor:
+        player.play_turn()
+    else:
+        oponent.play_turn()
 
     if hasattr(game, 'kaiji') and game.kaiji.life <= 0:
         return "Tonegawa wins"
@@ -95,9 +98,9 @@ def choose_winner(player_card, oponent_card):
     if winner_card is None:
         return None
     if winner_card == player_card:
-        return "Player wins"
+        return "Kaiji wins"
     if winner_card == oponent_card:
-        return "Computer wins"
+        return "Tonegawa wins"
     return None
 def _choose_side():
     if getattr(game, 'player_side', None) == "random":
@@ -128,7 +131,7 @@ def play_turn():
     
     return (player_card, opponent_card, result)
         
-
+'''idk but...fucking magic'''
 
     
 
