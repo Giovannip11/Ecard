@@ -132,12 +132,20 @@ def play_turn():
     return (player_card, opponent_card, result)
 
 def side_after_turn():   
-    if game.player_side == Empereor:
-        game.player_side = Slave
-        game.computer_side = Empereor
-    elif game.player_side == Slave:
-        game.player_side = Empereor
-        game.computer_side = Slave
+    if game.player_side == Empereor and game.computer_side == Slave:
+        if game.turn_count % 2 == 0 and game.turn_count != 0:
+            change(Kaiji, Tonegawa)
+
+def change(player,oponent):
+    player.side,oponent.side=oponent.side,player.side
+
+def tonegawa_expressions():
+    expressions =[
+        "Money is worth more than life.",
+        "You have no one to blame but yourself for being losers.What you must to do now is to win! Just win!",
+        "One:courage,Two:guts,ThreeDetermination!This is E-Card"
+    ]
+    
 #after two turns side need to change
 '''idk but...fucking magic'''
 
