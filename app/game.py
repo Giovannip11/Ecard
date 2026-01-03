@@ -9,6 +9,13 @@ class player:
         self.life = life
 
 
+class game:
+    def __init__(self, players, turns, cards):
+        self.players = players
+        self.turns = turns
+        self.cards = cards
+
+
 Kaiji = player(life=10000)
 Tonegawa = player(life=10000)
 
@@ -19,6 +26,15 @@ class cards:
         self.power = power
 
 
+class player_side:
+    def __init__(self, name, side):
+        self.name = name
+        self.side = side
+
+
+Empereor_side = player_side("Empereor", 1)
+Slave_side = player_side("Slave", 2)
+
 Empereor = cards("Empereor", 1)
 Slave = cards("Slave", -1)
 Citizen = cards("Citizen", 0)
@@ -26,12 +42,12 @@ Citizen = cards("Citizen", 0)
 
 def start_game():
     if app.game is not None:
-        app.game.start()
+        _start()
 
 
 def bet(life):
     if app.game is not None:
-        return app.game.bet(life)
+        return bet(life)
     try:
         betlife = int(input("Enter the life you want to bet: "))
         return betlife
@@ -40,9 +56,9 @@ def bet(life):
 
 
 def _start():
-    game.shuffle_deck()
-    game.choose_side()
-    if game.player_side == Empereor:
+    _shuffle_deck()
+    _choose_side()
+    if player_side == Empereor:
         player.play_turn()
     else:
         oponent.play_turn()
@@ -64,7 +80,7 @@ def player_choose_card():
 
     try:
         if hasattr(app.game, "player_choose_card"):
-            app.game.player_choose_card()
+            player_choose_card()
     except Exception:
         pass
 
@@ -72,13 +88,13 @@ def player_choose_card():
     if player_card_name is None:
         return None
 
-    if game.player_side == "Empereor":
+    if player_side == "Empereor":
         match player_card_name:
             case "Empereor":
                 return Empereor
             case "Citizen":
                 return Citizen
-    elif game.player_side == "Slave":
+    elif player_side == "Slave":
         match player_card_name:
             case "Slave":
                 return Slave
@@ -118,8 +134,8 @@ def choose_winner(player_card, oponent_card):
 
 def _choose_side():
     if getattr(game, "player_side", None) == "random":
-        game.player_side = random.choice(["Empereor", "Slave"])
-        game.computer_side = "Empereor" if game.player_side == "Slave" else "Slave"
+        player_side = random.choice(["Empereor", "Slave"])
+        computer_side = "Empereor" if player_side == "Slave" else "Slave"
 
 
 def play_turn():
@@ -127,7 +143,7 @@ def play_turn():
         return None
 
     try:
-        betlife = app.game.bet()
+        betlife = bet(life)
     except Exception:
         betlife = None
 
@@ -145,7 +161,7 @@ def play_turn():
 
 
 def side_after_turn():
-    if game.player_side == Empereor and game.computer_side == Slave:
+    if player_side == Empereor and game.computer_side == Slave:
         if game.turn_count % 2 == 0 and game.turn_count != 0:
             change(Kaiji, Tonegawa)
 
@@ -166,6 +182,6 @@ def tonegawa_expressions():
 """idk but...fucking magic"""
 
 
-game.start = _start
-game.shuffle_deck = _shuffle_deck
-game.choose_side = _choose_side
+start_game()
+_shuffle_deck()
+_choose_side()
