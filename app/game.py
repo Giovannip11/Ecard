@@ -9,15 +9,36 @@ class player:
         self.life = life
 
 
-class game:
-    def __init__(self, players, turns, cards):
-        self.players = players
-        self.turns = turns
-        self.cards = cards
-
-
 Kaiji = player(life=10000)
 Tonegawa = player(life=10000)
+
+
+class game:
+    def __init__(self, player, turns, cards, player_side):
+        self.player = player
+        self.turns = turns
+        self.cards = cards
+        self.player_side = player_side
+
+    def _shuffle_deck(self):
+        if hasattr(game, "deck"):
+            random.shuffle(cards)
+
+    def _start(self):
+        _choose_side()
+        if player_side == Empereor:
+            player.play_turn()
+        else:
+            oponent.play_turn()
+
+        if hasattr(game, "kaiji") and Kaiji.life <= 0:
+            return "Tonegawa wins"
+        if hasattr(game, "Tonegawa") and Tonegawa.life <= 0:
+            return "Kaiji wins"
+
+    def start_game(self):
+        if game is not None:
+            print("Game Start")
 
 
 class cards:
@@ -40,13 +61,8 @@ Slave = cards("Slave", -1)
 Citizen = cards("Citizen", 0)
 
 
-def start_game():
-    if app.game is not None:
-        _start()
-
-
 def bet(life):
-    if app.game is not None:
+    if game is not None:
         return bet(life)
     try:
         betlife = int(input("Enter the life you want to bet: "))
@@ -55,36 +71,17 @@ def bet(life):
         return None
 
 
-def _start():
-    _shuffle_deck()
-    _choose_side()
-    if player_side == Empereor:
-        player.play_turn()
-    else:
-        oponent.play_turn()
-
-    if hasattr(game, "kaiji") and game.kaiji.life <= 0:
-        return "Tonegawa wins"
-    if hasattr(game, "Tonegawa") and game.Tonegawa.life <= 0:
-        return "Kaiji wins"
-
-
-def _shuffle_deck():
-    if hasattr(game, "deck"):
-        random.shuffle(game.deck)
-
-
 def player_choose_card():
-    if app.game is None:
+    if game is None:
         return None
 
     try:
-        if hasattr(app.game, "player_choose_card"):
+        if hasattr(game, "player_choose_card"):
             player_choose_card()
     except Exception:
         pass
 
-    player_card_name = getattr(app.game, "player_card", None)
+    player_card_name = getattr(game, "player_card", None)
     if player_card_name is None:
         return None
 
@@ -148,8 +145,8 @@ def play_turn():
         betlife = None
 
     try:
-        if hasattr(app.game, "play_turn"):
-            app.game.play_turn()
+        if hasattr(game, "play_turn"):
+            game.play_turn()
     except Exception:
         pass
 
@@ -180,8 +177,3 @@ def tonegawa_expressions():
 
 # after two turns side need to change
 """idk but...fucking magic"""
-
-
-start_game()
-_shuffle_deck()
-_choose_side()
