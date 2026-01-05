@@ -1,7 +1,6 @@
 import random
 
 import app
-import app.oponent as oponent
 
 
 class player:
@@ -12,6 +11,9 @@ class player:
         self.side = None
 
     def choose_card(self):
+        return random.choice(self.cards)
+
+    def bot_choose_card(self):
         return random.choice(self.cards)
 
 
@@ -55,7 +57,7 @@ class Game:
     def play_turn(self):
         self.turn = +1
         card1 = self.player1.choose_card()
-        card2 = self.player2.choose_card()
+        card2 = self.player2.bot_choose_card()
 
         if card1 == card2:
             return print("Empate")
@@ -83,6 +85,9 @@ def tonegawa_expressions():
         "You have no one to blame but yourself for being losers.What you must to do now is to win! Just win!",
         "One:courage,Two:guts,ThreeDetermination!This is E-Card",
     ]
+    time = +1
+    if time % 5 == 0:
+        return print(expressions)
 
 
 # after two turns side need to change
