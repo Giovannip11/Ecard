@@ -1,7 +1,5 @@
 import random
 
-import app
-
 
 class player:
     def __init__(self, name, life=10000):
@@ -37,7 +35,10 @@ class Game:
     def side(self):
         sides = ["Empereor", "Slave"]
         random.shuffle(sides)
-        if self.player1.sides == "Empereor":
+
+        self.player1.side = sides[0]
+        self.player2.side = sides[1]
+        if self.player1.side == "Empereor":
             self.player1.cards = [EMPEREOR, CITIZEN]
             self.player2.cards = [SLAVE, CITIZEN]
         else:
@@ -48,11 +49,11 @@ class Game:
         total = c1 + c2
 
         if total == 0:
-            return SLAVE
+            return "Slave"
         if total == 1:
-            return EMPEREOR
+            return "EMPEREOR"
         if total == -1:
-            return CITIZEN
+            return "CITIZEN"
 
     def play_turn(self):
         self.turn = +1
@@ -70,10 +71,12 @@ class Game:
             return "PLayer 2 venceu"
 
 
-kaiji = player("Kaiji")
-tonegawa = player("Tonegawa")
+Player = player("Kaiji")
+bot = player("Tonegawa")
 
-game = Game(kaiji, tonegawa)
+game = Game(player, bot)
+game.side()
+
 
 game.side()
 game.play_turn()
