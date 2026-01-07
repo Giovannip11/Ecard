@@ -26,7 +26,7 @@ class Game:
         self.player2 = player2
         self.turns = 0
 
-        self.EMPEREOR = self.cards("Empereor", 1)
+        self.EMPEROR = self.cards("Empereor", 1)
         self.SLAVE = self.cards("Slave", -1)
         self.CITIZEN = self.cards("Citizen", 0)
 
@@ -37,11 +37,11 @@ class Game:
         self.player1.side = sides[0]
         self.player2.side = sides[1]
         if self.player1.side == "Empereor":
-            self.player1.cards = [self.EMPEREOR, self.CITIZEN]
+            self.player1.cards = [self.EMPEROR, self.CITIZEN]
             self.player2.cards = [self.SLAVE, self.CITIZEN]
         else:
             self.player1.cards = [self.SLAVE, self.CITIZEN]
-            self.player2.cards = [self.EMPEREOR, self.CITIZEN]
+            self.player2.cards = [self.EMPEROR, self.CITIZEN]
 
     def compare_cards(self, c1, c2):
         total = c1.power + c2.power
@@ -53,7 +53,7 @@ class Game:
         if total == -1:
             return "CITIZEN"
 
-    def play_turn(self):
+    def play_turn(self, cards):
         self.turn = +1
         card1 = self.player1.choose_card(self)
         card2 = self.player2.bot_choose_card(self)
@@ -77,7 +77,7 @@ game.side()
 
 
 game.side()
-game.play_turn()
+game.play_turn(player.choose_card)
 
 
 def tonegawa_expressions():
