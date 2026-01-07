@@ -15,22 +15,20 @@ class player:
         return random.choice(self.cards)
 
 
-class cards:
-    def __init__(self, name, power):
-        self.name = name
-        self.power = power
-
-
-EMPEREOR = cards("Empereor", 1)
-SLAVE = cards("Slave", -1)
-CITIZEN = cards("Citizen", 0)
-
-
 class Game:
+    class cards:
+        def __init__(self, name, power):
+            self.name = name
+            self.power = power
+
     def __init__(self, player1, player2):
         self.player1 = player1
         self.player2 = player2
         self.turns = 0
+
+        self.EMPEREOR = self.cards("Empereor", 1)
+        self.SLAVE = self.cards("Slave", -1)
+        self.CITIZEN = self.cards("Citizen", 0)
 
     def side(self):
         sides = ["Empereor", "Slave"]
@@ -39,14 +37,14 @@ class Game:
         self.player1.side = sides[0]
         self.player2.side = sides[1]
         if self.player1.side == "Empereor":
-            self.player1.cards = [EMPEREOR, CITIZEN]
-            self.player2.cards = [SLAVE, CITIZEN]
+            self.player1.cards = [self.EMPEREOR, self.CITIZEN]
+            self.player2.cards = [self.SLAVE, self.CITIZEN]
         else:
-            self.player1.cards = [SLAVE, CITIZEN]
-            self.player2.cards = [EMPEREOR, CITIZEN]
+            self.player1.cards = [self.SLAVE, self.CITIZEN]
+            self.player2.cards = [self.EMPEREOR, self.CITIZEN]
 
     def compare_cards(self, c1, c2):
-        total = c1 + c2
+        total = c1.power + c2.power
 
         if total == 0:
             return "Slave"
@@ -57,8 +55,8 @@ class Game:
 
     def play_turn(self):
         self.turn = +1
-        card1 = self.player1.choose_card()
-        card2 = self.player2.bot_choose_card()
+        card1 = self.player1.choose_card(self)
+        card2 = self.player2.bot_choose_card(self)
 
         if card1 == card2:
             return print("Empate")
