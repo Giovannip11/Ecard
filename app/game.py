@@ -53,10 +53,10 @@ class Game:
         if total == -1:
             return "CITIZEN"
 
-    def play_turn(self, cards):
+    def play_turn(self, player_card):
         self.turn = +1
-        card1 = self.player1.choose_card(self)
-        card2 = self.player2.bot_choose_card(self)
+        card1 = self.player1.choose_card()
+        card2 = self.player2.bot_choose_card()
 
         if card1 == card2:
             return print("Empate")
@@ -77,7 +77,6 @@ game.side()
 
 
 game.side()
-game.play_turn(player.choose_card)
 
 
 def tonegawa_expressions():

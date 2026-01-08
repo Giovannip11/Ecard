@@ -9,7 +9,6 @@
             href="{{ url_for('static', filename='style.css') }}"
         />
     </head>
-    <script src="{{ url_for('static', filename='game.js') }}"></script>
 
     <body>
         <h1>🎮 ECard Battle</h1>
@@ -61,4 +60,6 @@
             <button onclick="resetGame()">🔄 Reset Game</button>
         </div>
     </body>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
 </html>
