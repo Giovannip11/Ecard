@@ -32,12 +32,22 @@ def rules():
 @routes.route("/play", methods=["POST"])
 def play():
     data = request.json
-    card_name = data["card"]
+    player_card_name = data["card"]
 
-    mapping = {"Emperor": game.EMPEROR, "Slave": game.SLAVE, "Citizen": game.CITIZEN}
+    mapping = {
+        "Emperor": game.EMPEROR,
+        "Citizen": game.CITIZEN,
+        "Slave": game.SLAVE,
+    }
 
-    player_card = mapping[card_name]
+    player_card = mapping[player_card_name]
 
     result = game.play_turn(player_card)
 
-    return jsonify(result)
+    return jsonify(
+        {
+            "player_card": player_card.name,
+            "bot_card": result["bot_card"].name,
+            "winner": result["winner"],
+        }
+    )

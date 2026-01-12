@@ -54,25 +54,17 @@ class Game:
             return "CITIZEN"
 
     def play_turn(self, player_card):
-        self.turn = +1
-        card1 = self.player1.choose_card()
-        card2 = self.player2.bot_choose_card()
+        bot_card = random.choice(self.player2.cards)
 
-        if card1 == card2:
-            return print("Empate")
+        winner = self.compare_cards(player_card, bot_card)
 
-        winner_card = self.compare_cards(card1, card2)
-
-        if winner_card == card1:
-            return "Player 1 venceu"
-        if winner_card == card2:
-            return "PLayer 2 venceu"
+        return {"bot_card": bot_card, "winner": winner}
 
 
 Player = player("Kaiji")
 bot = player("Tonegawa")
 
-game = Game(player, bot)
+game = Game(Player, bot)
 game.side()
 
 

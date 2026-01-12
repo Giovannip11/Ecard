@@ -36,21 +36,35 @@
             <div class="player-section">
                 <h2>You</h2>
                 <div class="card-area">
-                    <button class="card" onclick="playCard('Emperor')">
-                        Emperor
-                    </button>
-                    <button class="card" onclick="playCard('Citizen')">
-                        Citizen
-                    </button>
-                    <button class="card" onclick="playCard('Citizen')">
-                        Citizen
-                    </button>
-                    <button class="card" onclick="playCard('Citizen')">
-                        Citizen
-                    </button>
-                    <button class="card" onclick="playCard('Slave')">
-                        Slave
-                    </button>
+                    <img
+                        src="{{ url_for('static', filename='cards/Empereor.png') }}"
+                        class="card"
+                        onclick="playCard('Emperor')"
+                    />
+
+                    <img
+                        src="{{ url_for('static', filename='cards/Citizen.png') }}"
+                        class="card"
+                        onclick="playCard('Citizen')"
+                    />
+
+                    <img
+                        src="{{ url_for('static', filename='cards/Citizen.png') }}"
+                        class="card"
+                        onclick="playCard('Citizen')"
+                    />
+
+                    <img
+                        src="{{ url_for('static', filename='cards/Citizen.png') }}"
+                        class="card"
+                        onclick="playCard('Citizen')"
+                    />
+
+                    <img
+                        src="{{ url_for('static', filename='cards/Slave.png') }}"
+                        class="card"
+                        onclick="playCard('Slave')"
+                    />
                 </div>
             </div>
         </div>
