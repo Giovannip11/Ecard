@@ -43,11 +43,4 @@ def play():
     player_card = mapping[player_card_name]
 
     result = game.play_turn(player_card)
-
-    return jsonify(
-        {
-            "player_card": player_card.name,
-            "bot_card": result["bot_card"].name,
-            "winner": result["winner"],
-        }
-    )
+    return jsonify(result)

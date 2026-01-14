@@ -31,17 +31,20 @@ class Game:
         self.CITIZEN = self.cards("Citizen", 0)
 
     def side(self):
-        sides = ["Empereor", "Slave"]
-        random.shuffle(sides)
-
-        self.player1.side = sides[0]
-        self.player2.side = sides[1]
-        if self.player1.side == "Empereor":
-            self.player1.cards = [self.EMPEROR, self.CITIZEN]
-            self.player2.cards = [self.SLAVE, self.CITIZEN]
+        if random.choice([True, False]):
+            self.player1.side = "Empereor"
+            self.player2.side = "Slave"
         else:
-            self.player1.cards = [self.SLAVE, self.CITIZEN]
-            self.player2.cards = [self.EMPEROR, self.CITIZEN]
+            self.player1.side = "Slave"
+            self.player2.side = "Empereor"
+
+    def deal_cards(self):
+        if self.player1.side == "Emperor":
+            self.player1.cards = [self.EMPEROR] + [self.CITIZEN] * 4
+            self.player2.cards = [self.SLAVE] + [self.CITIZEN] * 4
+        else:
+            self.player1.cards = [self.SLAVE] + [self.CITIZEN] * 4
+            self.player2.cards = [self.EMPEROR] + [self.CITIZEN] * 4
 
     def compare_cards(self, c1, c2):
         total = c1.power + c2.power
@@ -56,9 +59,22 @@ class Game:
     def play_turn(self, player_card):
         bot_card = random.choice(self.player2.cards)
 
+        self.player1.cards.remove(player_card)
+        self.player2.cards.remove(bot_card)
+
         winner = self.compare_cards(player_card, bot_card)
 
-        return {"bot_card": bot_card, "winner": winner}
+        self.round += 1
+
+        if self.round % 2 == 0:
+            self.side()
+
+        return {
+            "player_card": player_card.name,
+            "bot_card": bot_card.name,
+            "winner": winner,
+            "player_side": self.player1.side,
+        }
 
 
 Player = player("Kaiji")
