@@ -99,4 +99,3 @@ def tonegawa_expressions():
 
 
 # after two turns side need to change
-"""idk but...fucking magic"""

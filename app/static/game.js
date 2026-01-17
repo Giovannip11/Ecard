@@ -8,7 +8,7 @@ async function playCard(card) {
   const data = await res.json();
 
   document.getElementById("status-text").innerText =
-    `Você jogou ${data.player_card} — Oponente jogou ${data.bot_card}
+    ` your turn ${data.player_card} — Oponente turns ${data.bot_card}
 Resultado: ${data.result}`;
 }
 
@@ -38,10 +38,10 @@ function showResult(winner) {
   const status = document.getElementById("status-text");
 
   if (winner === "player") {
-    status.innerText = "🎉 Você venceu a rodada!";
+    status.innerText = "🎉 You win!";
   } else if (winner === "bot") {
-    status.innerText = "💀 O bot venceu!";
+    status.innerText = "💀 Tonegawa win!";
   } else {
-    status.innerText = "😐 Empate!";
+    status.innerText = "😐 Draw!";
   }
 }
