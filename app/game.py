@@ -56,13 +56,20 @@ class Game:
         if total == -1:
             return "CITIZEN"
 
-    def play_turn(self, player_card):
+    def play_turn(self, player_card, lifebet):
+        lifebet = int(lifebet)
+
         bot_card = random.choice(self.player2.cards)
 
         self.player1.cards.remove(player_card)
         self.player2.cards.remove(bot_card)
 
         winner = self.compare_cards(player_card, bot_card)
+
+        if winner == self.player1.side:
+            self.player1.life += lifebet
+        elif winner == self.player2.side:
+            self.player1.life -= lifebet
 
         self.round += 1
 
@@ -73,6 +80,7 @@ class Game:
             "player_card": player_card.name,
             "bot_card": bot_card.name,
             "winner": winner,
+            "player_life": self.player1.life,
             "player_side": self.player1.side,
         }
 
