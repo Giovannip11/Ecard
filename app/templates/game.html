@@ -13,6 +13,31 @@
     <body>
         <h1>🎮 ECard Battle</h1>
         <p class="subtitle">Player: <strong>{{ player or "Guest" }}</strong></p>
+        <div class="life-container">
+            <div class="life-box opponent-life">
+                <span class="life-name">Tonegawa</span>
+                <div class="life-bar">
+                    <div
+                        class="life-fill"
+                        id="opponent-life"
+                        style="width: 100%"
+                    ></div>
+                </div>
+                <span class="life-value" id="opponent-life-text">10000</span>
+            </div>
+
+            <div class="life-box player-life">
+                <span class="life-name">{{ player or "You" }}</span>
+                <div class="life-bar">
+                    <div
+                        class="life-fill"
+                        id="player-life"
+                        style="width: 100%"
+                    ></div>
+                </div>
+                <span class="life-value" id="player-life-text">10000</span>
+            </div>
+        </div>
 
         <div class="game-container">
             <!-- Opponent section -->

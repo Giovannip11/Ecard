@@ -168,3 +168,51 @@ input[type="text"]::placeholder {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+.life-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.life-box {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 15px 20px;
+    border-radius: 15px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.life-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.life-bar {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.life-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    transition: width 0.4s ease;
+}
+
+.opponent-life .life-fill {
+    background: linear-gradient(90deg, #f87171, #dc2626);
+}
+
+.life-value {
+    font-size: 0.95rem;
+    color: #f1f1f1;
+}

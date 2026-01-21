@@ -58,6 +58,8 @@ class Game:
 
     def play_turn(self, player_card, lifebet):
         lifebet = int(lifebet)
+        if lifebet <= 0 or lifebet > game.player1.life:
+            return ({"error": "Invalid life bet"}), 400
 
         bot_card = random.choice(self.player2.cards)
 

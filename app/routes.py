@@ -33,6 +33,7 @@ def rules():
 def play():
     data = request.json
     player_card_name = data["card"]
+    lifebet = int(data["life"])
 
     mapping = {
         "Emperor": game.EMPEROR,
@@ -42,5 +43,5 @@ def play():
 
     player_card = mapping[player_card_name]
 
-    result = game.play_turn(player_card)
+    result = game.play_turn(player_card, lifebet)
     return jsonify(result)
