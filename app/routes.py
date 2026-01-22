@@ -45,3 +45,13 @@ def play():
 
     result = game.play_turn(player_card, lifebet)
     return jsonify(result)
+
+
+@routes.route("/hand")
+def get_hand():
+    return jsonify(
+        {
+            "player_cards": game.player1.cards,
+            "player_side": game.player1.side,
+        }
+    )

@@ -58,41 +58,14 @@
             </div>
 
             <!-- Player section -->
+            <!-- Player section -->
             <div class="player-section">
                 <h2>You</h2>
-                <div class="card-area">
-                    <img
-                        src="{{ url_for('static', filename='images/Empereor.png') }}"
-                        class="card"
-                        onclick="playCard('Emperor')"
-                    />
-
-                    <img
-                        src="{{ url_for('static', filename='images/Citizen.png') }}"
-                        class="card"
-                        onclick="playCard('Citizen')"
-                    />
-
-                    <img
-                        src="{{ url_for('static', filename='images/Citizen.png') }}"
-                        class="card"
-                        onclick="playCard('Citizen')"
-                    />
-
-                    <img
-                        src="{{ url_for('static', filename='images/Citizen.png') }}"
-                        class="card"
-                        onclick="playCard('Citizen')"
-                    />
-
-                    <img
-                        src="{{ url_for('static', filename='images/Slave.png') }}"
-                        class="card"
-                        onclick="playCard('Slave')"
-                    />
+                <div class="card-area" id="player-hand">
+                    <!-- CARTAS ENTRAM AQUI PELO JS -->
                 </div>
             </div>
-        </div>
+
 
         <div class="buttons">
             <button onclick="location.href='/'">🏠 Back to Home</button>

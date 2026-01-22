@@ -63,6 +63,8 @@ class Game:
 
         bot_card = random.choice(self.player2.cards)
 
+        self.player2.cards.remove(bot_card)
+
         self.player1.cards.remove(player_card)
         self.player2.cards.remove(bot_card)
 

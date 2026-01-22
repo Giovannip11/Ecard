@@ -53,3 +53,22 @@ fetch("/play", {
     life: betValue,
   }),
 });
+async function loadHand() {
+  const res = await fetch("/hand");
+  const data = await res.json();
+
+  const handDiv = document.getElementById("player-hand");
+  handDiv.innerHTML = "";
+
+  data.player_cards.forEach((card) => {
+    handDiv.innerHTML += `
+            <img
+                src="/static/images/${card}.png"
+                class="card"
+                onclick="playCard('${card}')"
+            />
+        `;
+  });
+}
+
+loadHand();
